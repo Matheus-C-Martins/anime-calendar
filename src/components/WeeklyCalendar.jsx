@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import AnimeModal from './AnimeModal';
 import ViewToggle from './ViewToggle';
+import SearchBar from './SearchBar';
 import './WeeklyCalendar.css';
 
 function WeeklyCalendar({ animes, view, setView }) {
@@ -42,10 +43,22 @@ function WeeklyCalendar({ animes, view, setView }) {
   const unknownDayAnimes = animes.filter(anime => !anime.broadcast?.day);
 
   return (
-    <div className="weekly-calendar">      <div className="calendar-controls">
+    <div className="weekly-calendar">
+      <div className="filters-bar">
+        <SearchBar disabled={true} />
+        
+        <select className="filter-select" disabled>
+          <option>{t('filterDay')}: {t('all')}</option>
+        </select>
+
+        <select className="filter-select" disabled>
+          <option>{t('filterSort')}: {t('score')}</option>
+        </select>
+
         <ViewToggle view={view} onViewChange={setView} />
       </div>
-            <div className="calendar-grid">
+      
+      <div className="calendar-grid">
         {daysOfWeek.map(day => {
           const dayAnimes = getAnimesByDay(day);
           

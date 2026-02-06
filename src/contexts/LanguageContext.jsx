@@ -36,7 +36,9 @@ export const translations = {
     
     // Filters
     filterByDay: 'Filtrar por dia:',
+    filterDay: 'Dia da semana',
     sortBy: 'Ordenar por:',
+    filterSort: 'Ordenar',
     score: 'Pontuação',
     popularity: 'Popularidade',
     title: 'Título',
@@ -124,7 +126,9 @@ export const translations = {
     
     // Filters
     filterByDay: 'Filter by day:',
+    filterDay: 'Day of week',
     sortBy: 'Sort by:',
+    filterSort: 'Sort',
     score: 'Score',
     popularity: 'Popularity',
     title: 'Title',

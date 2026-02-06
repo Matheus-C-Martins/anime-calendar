@@ -3,6 +3,25 @@
   padding: 20px 0;
 }
 
+.weekly-calendar .filters-bar {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  background: var(--bg-gradient-start);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.weekly-calendar .search-bar {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
 .calendar-controls {
   display: flex;
   justify-content: center;

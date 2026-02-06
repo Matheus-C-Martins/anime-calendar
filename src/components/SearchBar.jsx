@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import './SearchBar.css';
 
-function SearchBar({ onSearch, onClear }) {
+function SearchBar({ onSearch = () => {}, onClear = () => {}, disabled = false }) {
   const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -27,6 +27,7 @@ function SearchBar({ onSearch, onClear }) {
           placeholder={t('searchPlaceholder')}
           value={searchTerm}
           onChange={handleChange}
+          disabled={disabled}
           aria-label={t('search')}
         />
         {searchTerm && (

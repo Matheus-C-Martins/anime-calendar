@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 import ViewToggle from './ViewToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
-function AnimeList({ animes, showFilters = true, view, setView }) {
+function AnimeList({ animes, showFilters = true, view, setView, isCalendarView = false }) {
   const { t } = useLanguage();
   const [filterDay, setFilterDay] = useState('all');
   const [sortBy, setSortBy] = useState('score');
@@ -70,16 +70,17 @@ function AnimeList({ animes, showFilters = true, view, setView }) {
     <div className="anime-list-container">
       {showFilters && (
         <div className="filters-bar">
-          <SearchBar onSearch={handleSearch} onClear={handleClearSearch} />
+          <SearchBar onSearch={handleSearch} onClear={handleClearSearch} disabled={isCalendarView} />
           
-          <select className="filter-select" value={filterDay} onChange={(e) => setFilterDay(e.target.value)}>
-            {days.map(day => (
+          <select className="filter-select" value={filterDay} onChange={(e) => setFilterDay(e.target.value)} disabled={isCalendarView}>
+            <option value="all">{t('filterDay')}: {t('all')}</option>
+            {days.filter(d => d !== 'all').map(day => (
               <option key={day} value={day}>{getDayLabel(day)}</option>
             ))}
           </select>
 
-          <select className="filter-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="score">{t('score')}</option>
+          <select className="filter-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)} disabled={isCalendarView}>
+            <option value="score">{t('filterSort')}: {t('score')}</option>
             <option value="popularity">{t('popularity')}</option>
             <option value="title">{t('title')}</option>
           </select>
