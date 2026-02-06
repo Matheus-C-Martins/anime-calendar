@@ -1,0 +1,36 @@
+.language-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.language-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.lang-option {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.lang-option.active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.lang-separator {
+  opacity: 0.4;
+  margin: 0 2px;
+}

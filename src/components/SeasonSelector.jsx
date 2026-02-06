@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import './SeasonSelector.css';
-
-const SEASONS = [
-  { value: 'winter', label: '❄️ Inverno', emoji: '❄️' },
-  { value: 'spring', label: '🌸 Primavera', emoji: '🌸' },
-  { value: 'summer', label: '☀️ Verão', emoji: '☀️' },
-  { value: 'fall', label: '🍂 Outono', emoji: '🍂' }
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 function SeasonSelector({ currentSeason, currentYear, onSeasonChange }) {
+  const { t } = useLanguage();
   const [selectedSeason, setSelectedSeason] = useState(currentSeason);
   const [selectedYear, setSelectedYear] = useState(currentYear);
+
+  const SEASONS = [
+    { value: 'winter', emoji: '❄️' },
+    { value: 'spring', emoji: '🌸' },
+    { value: 'summer', emoji: '☀️' },
+    { value: 'fall', emoji: '🍂' }
+  ];
 
   const handleSeasonClick = (season) => {
     setSelectedSeason(season);
@@ -53,7 +55,7 @@ function SeasonSelector({ currentSeason, currentYear, onSeasonChange }) {
             className={`season-btn ${selectedSeason === season.value ? 'active' : ''}`}
           >
             <span className="season-emoji">{season.emoji}</span>
-            <span className="season-label">{season.label.replace(season.emoji + ' ', '')}</span>
+            <span className="season-label">{t(season.value)}</span>
           </button>
         ))}
       </div>

@@ -98,10 +98,10 @@ export const getCurrentSeason = () => {
 };
 
 // Função para obter o dia da semana em português
-export const getDayOfWeek = (broadcast) => {
-  if (!broadcast?.day) return 'Desconhecido';
+export const getDayOfWeek = (broadcast, language = 'pt') => {
+  if (!broadcast?.day) return language === 'pt' ? 'Desconhecido' : 'Unknown';
   
-  const days = {
+  const daysPt = {
     'Mondays': 'Segunda-feira',
     'Tuesdays': 'Terça-feira',
     'Wednesdays': 'Quarta-feira',
@@ -111,5 +111,16 @@ export const getDayOfWeek = (broadcast) => {
     'Sundays': 'Domingo'
   };
   
+  const daysEn = {
+    'Mondays': 'Monday',
+    'Tuesdays': 'Tuesday',
+    'Wednesdays': 'Wednesday',
+    'Thursdays': 'Thursday',
+    'Fridays': 'Friday',
+    'Saturdays': 'Saturday',
+    'Sundays': 'Sunday'
+  };
+  
+  const days = language === 'pt' ? daysPt : daysEn;
   return days[broadcast.day] || broadcast.day;
 };

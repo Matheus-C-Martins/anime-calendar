@@ -15,6 +15,14 @@
   color: white;
   padding: 40px 20px;
   margin-bottom: 30px;
+  position: relative;
+}
+
+.header-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  padding: 0 20px;
 }
 
 .app-header h1 {

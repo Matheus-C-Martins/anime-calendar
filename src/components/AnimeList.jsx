@@ -1,21 +1,27 @@
 import { useState } from 'react';
 import './AnimeList.css';
 import AnimeCard from './AnimeCard';
+import { useLanguage } from '../contexts/LanguageContext';
 
 function AnimeList({ animes }) {
+  const { t } = useLanguage();
   const [filterDay, setFilterDay] = useState('all');
   const [sortBy, setSortBy] = useState('score');
 
   const days = ['all', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays', 'Sundays'];
-  const dayLabels = {
-    'all': 'Todos',
-    'Mondays': 'Segunda',
-    'Tuesdays': 'Terça',
-    'Wednesdays': 'Quarta',
-    'Thursdays': 'Quinta',
-    'Fridays': 'Sexta',
-    'Saturdays': 'Sábado',
-    'Sundays': 'Domingo'
+  
+  const getDayLabel = (day) => {
+    const dayMap = {
+      'all': 'all',
+      'Mondays': 'monday',
+      'Tuesdays': 'tuesday',
+      'Wednesdays': 'wednesday',
+      'Thursdays': 'thursday',
+      'Fridays': 'friday',
+      'Saturdays': 'saturday',
+      'Sundays': 'sunday'
+    };
+    return t(dayMap[day]);
   };
 
   // Filtrar por dia
@@ -42,25 +48,25 @@ function AnimeList({ animes }) {
     <div className="anime-list-container">
       <div className="filters">
         <div className="filter-group">
-          <label>Filtrar por dia:</label>
+          <label>{t('filterByDay')}</label>
           <select value={filterDay} onChange={(e) => setFilterDay(e.target.value)}>
             {days.map(day => (
-              <option key={day} value={day}>{dayLabels[day]}</option>
+              <option key={day} value={day}>{getDayLabel(day)}</option>
             ))}
           </select>
         </div>
 
         <div className="filter-group">
-          <label>Ordenar por:</label>
+          <label>{t('sortBy')}</label>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="score">Pontuação</option>
-            <option value="popularity">Popularidade</option>
-            <option value="title">Título</option>
+            <option value="score">{t('score')}</option>
+            <option value="popularity">{t('popularity')}</option>
+            <option value="title">{t('title')}</option>
           </select>
         </div>
 
         <div className="results-count">
-          {sortedAnimes.length} anime{sortedAnimes.length !== 1 ? 's' : ''} encontrado{sortedAnimes.length !== 1 ? 's' : ''}
+          {sortedAnimes.length} {sortedAnimes.length === 1 ? t('animeFound') : t('animesFound')}
         </div>
       </div>
 
@@ -72,7 +78,7 @@ function AnimeList({ animes }) {
 
       {sortedAnimes.length === 0 && (
         <div className="no-results">
-          <p>Nenhum anime encontrado com os filtros selecionados.</p>
+          <p>{t('noResults')}</p>
         </div>
       )}
     </div>

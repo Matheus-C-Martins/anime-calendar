@@ -1,8 +1,10 @@
 import { getDayOfWeek } from '../services/jikanApi';
+import { useLanguage } from '../contexts/LanguageContext';
 import './AnimeCard.css';
 
 function AnimeCard({ anime }) {
-  const broadcastDay = getDayOfWeek(anime.broadcast);
+  const { t, language } = useLanguage();
+  const broadcastDay = getDayOfWeek(anime.broadcast, language);
   const broadcastTime = anime.broadcast?.time || '';
 
   return (
@@ -30,38 +32,38 @@ function AnimeCard({ anime }) {
 
         <div className="anime-info">
           <div className="info-item">
-            <span className="info-label">📅 Lançamento:</span>
+            <span className="info-label">📅 {t('release')}</span>
             <span className="info-value">{broadcastDay}</span>
           </div>
 
           {broadcastTime && (
             <div className="info-item">
-              <span className="info-label">🕐 Horário:</span>
+              <span className="info-label">🕐 {t('time')}</span>
               <span className="info-value">{broadcastTime} (JST)</span>
             </div>
           )}
 
           <div className="info-item">
-            <span className="info-label">📺 Tipo:</span>
+            <span className="info-label">📺 {t('type')}</span>
             <span className="info-value">{anime.type || 'N/A'}</span>
           </div>
 
           {anime.episodes && (
             <div className="info-item">
-              <span className="info-label">📼 Episódios:</span>
+              <span className="info-label">📼 {t('episodes')}</span>
               <span className="info-value">{anime.episodes}</span>
             </div>
           )}
 
           {anime.studios && anime.studios.length > 0 && (
             <div className="info-item">
-              <span className="info-label">🎬 Studio:</span>
+              <span className="info-label">🎬 {t('studio')}</span>
               <span className="info-value">{anime.studios[0].name}</span>
             </div>
           )}
 
           <div className="info-item">
-            <span className="info-label">👥 Membros:</span>
+            <span className="info-label">👥 {t('members')}</span>
             <span className="info-value">{anime.members?.toLocaleString() || 'N/A'}</span>
           </div>
         </div>
@@ -90,7 +92,7 @@ function AnimeCard({ anime }) {
           rel="noopener noreferrer"
           className="anime-link"
         >
-          Ver no MyAnimeList →
+          {t('viewOnMAL')} →
         </a>
       </div>
     </div>
