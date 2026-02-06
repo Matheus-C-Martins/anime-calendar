@@ -3,9 +3,10 @@ import './AnimeList.css';
 import AnimeCard from './AnimeCard';
 import AnimeModal from './AnimeModal';
 import SearchBar from './SearchBar';
+import ViewToggle from './ViewToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
-function AnimeList({ animes, showFilters = true }) {
+function AnimeList({ animes, showFilters = true, view, setView }) {
   const { t } = useLanguage();
   const [filterDay, setFilterDay] = useState('all');
   const [sortBy, setSortBy] = useState('score');
@@ -68,32 +69,29 @@ function AnimeList({ animes, showFilters = true }) {
   return (
     <div className="anime-list-container">
       {showFilters && (
-        <>
+        <div className="filters-bar">
           <SearchBar onSearch={handleSearch} onClear={handleClearSearch} />
-          <div className="filters">
-            <div className="filter-group">
-              <label>{t('filterByDay')}</label>
-              <select value={filterDay} onChange={(e) => setFilterDay(e.target.value)}>
-                {days.map(day => (
-                  <option key={day} value={day}>{getDayLabel(day)}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="filter-group">
-              <label>{t('sortBy')}</label>
-              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                <option value="score">{t('score')}</option>
-                <option value="popularity">{t('popularity')}</option>
-                <option value="title">{t('title')}</option>
-              </select>
-            </div>
-
-            <div className="results-count">
-              {sortedAnimes.length} {sortedAnimes.length === 1 ? t('animeFound') : t('animesFound')}
-            </div>
+          
+          <div className="filter-group">
+            <label>{t('filterByDay')}</label>
+            <select value={filterDay} onChange={(e) => setFilterDay(e.target.value)}>
+              {days.map(day => (
+                <option key={day} value={day}>{getDayLabel(day)}</option>
+              ))}
+            </select>
           </div>
-        </>
+
+          <div className="filter-group">
+            <label>{t('sortBy')}</label>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="score">{t('score')}</option>
+              <option value="popularity">{t('popularity')}</option>
+              <option value="title">{t('title')}</option>
+            </select>
+          </div>
+
+          <ViewToggle view={view} setView={setView} />
+        </div>
       )}
 
       <div className="anime-grid">

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import AnimeModal from './AnimeModal';
+import ViewToggle from './ViewToggle';
 import './WeeklyCalendar.css';
 
-function WeeklyCalendar({ animes }) {
+function WeeklyCalendar({ animes, view, setView }) {
   const { t } = useLanguage();
   const [selectedAnime, setSelectedAnime] = useState(null);
 
@@ -41,8 +42,10 @@ function WeeklyCalendar({ animes }) {
   const unknownDayAnimes = animes.filter(anime => !anime.broadcast?.day);
 
   return (
-    <div className="weekly-calendar">
-      <div className="calendar-grid">
+    <div className="weekly-calendar">      <div className="calendar-controls">
+        <ViewToggle view={view} setView={setView} />
+      </div>
+            <div className="calendar-grid">
         {daysOfWeek.map(day => {
           const dayAnimes = getAnimesByDay(day);
           

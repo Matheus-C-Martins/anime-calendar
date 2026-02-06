@@ -64,11 +64,6 @@ function App() {
       />
 
       <div className="app-content">
-        <header className="app-header">
-          <h1>📺 {t('appTitle')}</h1>
-          <p>{t('appSubtitle')}</p>
-        </header>
-        
         {!showFavorites && (
           <SeasonSelector 
             currentSeason={selectedSeason.season}
@@ -111,9 +106,9 @@ function App() {
 
       {!loading && !error && displayAnimes.length > 0 && (
         view === 'list' ? (
-          <AnimeList animes={displayAnimes} showFilters={!showFavorites} />
+          <AnimeList animes={displayAnimes} showFilters={!showFavorites} view={view} setView={handleViewChange} />
         ) : (
-          <WeeklyCalendar animes={displayAnimes} />
+          <WeeklyCalendar animes={displayAnimes} view={view} setView={handleViewChange} />
         )
       )}
 

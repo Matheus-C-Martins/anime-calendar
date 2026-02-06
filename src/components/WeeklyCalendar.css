@@ -3,6 +3,12 @@
   padding: 20px 0;
 }
 
+.calendar-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
