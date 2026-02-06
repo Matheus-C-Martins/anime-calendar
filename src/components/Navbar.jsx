@@ -73,11 +73,11 @@ function Navbar({ onShowFavorites, showingFavorites }) {
           <button 
             className="navbar-item language-toggle"
             onClick={() => { toggleLanguage(); closeMenu(); }}
-            aria-label={language === 'pt' ? 'English' : 'Português'}
+            aria-label={language === 'pt' ? 'Português' : 'English'}
           >
-            <span className="navbar-item-icon">{language === 'pt' ? '🇺🇸' : '🇧🇷'}</span>
+            <span className="navbar-item-icon">{language === 'pt' ? '🇵🇹' : '🇺🇸'}</span>
             <span className="navbar-item-text">
-              {language === 'pt' ? 'English' : 'Português'}
+              {language === 'pt' ? 'Português' : 'English'}
             </span>
           </button>
         </div>
