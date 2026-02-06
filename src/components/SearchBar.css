@@ -1,6 +1,6 @@
 .search-bar {
-  max-width: 1200px;
-  margin: 0 auto 40px;
+  width: 100%;
+  margin: 0;
 }
 
 .search-input-wrapper {

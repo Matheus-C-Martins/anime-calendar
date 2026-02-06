@@ -72,12 +72,6 @@ function App() {
           />
         )}
 
-        {!showFavorites && !loading && !error && (
-          <div className="view-toggle-container">
-            <ViewToggle view={view} onViewChange={handleViewChange} />
-          </div>
-        )}
-
         {showFavorites && (
           <div className="favorites-header">
             <h2>❤️ {t('myFavorites')}</h2>
