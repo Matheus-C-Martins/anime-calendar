@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import './SearchBar.css';
 
-function SearchBar({ onSearch = () => {}, onClear = () => {}, disabled = false }) {
+function SearchBar({ onSearch = () => {}, onClear = () => {}, disabled = false, value = '' }) {
   const { t } = useLanguage();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(value);
+
+  useEffect(() => {
+    setSearchTerm(value);
+  }, [value]);
 
   const handleChange = (e) => {
     const value = e.target.value;

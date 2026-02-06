@@ -6,11 +6,8 @@ import SearchBar from './SearchBar';
 import ViewToggle from './ViewToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
-function AnimeList({ animes, showFilters = true, view, setView, isCalendarView = false }) {
+function AnimeList({ animes, showFilters = true, view, setView, isCalendarView = false, filterDay, setFilterDay, sortBy, setSortBy, searchTerm, setSearchTerm }) {
   const { t } = useLanguage();
-  const [filterDay, setFilterDay] = useState('');
-  const [sortBy, setSortBy] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
   const [selectedAnime, setSelectedAnime] = useState(null);
 
   const days = ['all', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays', 'Sundays'];

@@ -22,6 +22,9 @@ function App() {
     return localStorage.getItem('anime-calendar-view') || 'list';
   });
   const [showFavorites, setShowFavorites] = useState(false);
+  const [filterDay, setFilterDay] = useState('');
+  const [sortBy, setSortBy] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     loadAnimes();
@@ -100,9 +103,27 @@ function App() {
 
       {!loading && !error && displayAnimes.length > 0 && (
         view === 'list' ? (
-          <AnimeList animes={displayAnimes} showFilters={!showFavorites} view={view} setView={handleViewChange} />
+          <AnimeList 
+            animes={displayAnimes} 
+            showFilters={!showFavorites} 
+            view={view} 
+            setView={handleViewChange}
+            filterDay={filterDay}
+            setFilterDay={setFilterDay}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          />
         ) : (
-          <WeeklyCalendar animes={displayAnimes} view={view} setView={handleViewChange} />
+          <WeeklyCalendar 
+            animes={displayAnimes} 
+            view={view} 
+            setView={handleViewChange}
+            filterDay={filterDay}
+            sortBy={sortBy}
+            searchTerm={searchTerm}
+          />
         )
       )}
 

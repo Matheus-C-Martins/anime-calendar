@@ -5,7 +5,7 @@ import ViewToggle from './ViewToggle';
 import SearchBar from './SearchBar';
 import './WeeklyCalendar.css';
 
-function WeeklyCalendar({ animes, view, setView }) {
+function WeeklyCalendar({ animes, view, setView, filterDay = '', sortBy = '', searchTerm = '' }) {
   const { t } = useLanguage();
   const [selectedAnime, setSelectedAnime] = useState(null);
 
@@ -45,14 +45,25 @@ function WeeklyCalendar({ animes, view, setView }) {
   return (
     <div className="weekly-calendar">
       <div className="filters-bar">
-        <SearchBar disabled={true} />
+        <SearchBar disabled={true} value={searchTerm} />
         
-        <select className="filter-select" disabled>
-          <option>{t('filterDay')}: {t('all')}</option>
+        <select className="filter-select" disabled value={filterDay}>
+          <option value="">{t('filterDay')}</option>
+          <option value="all">{t('all')}</option>
+          <option value="Mondays">{t('monday')}</option>
+          <option value="Tuesdays">{t('tuesday')}</option>
+          <option value="Wednesdays">{t('wednesday')}</option>
+          <option value="Thursdays">{t('thursday')}</option>
+          <option value="Fridays">{t('friday')}</option>
+          <option value="Saturdays">{t('saturday')}</option>
+          <option value="Sundays">{t('sunday')}</option>
         </select>
 
-        <select className="filter-select" disabled>
-          <option>{t('filterSort')}: {t('score')}</option>
+        <select className="filter-select" disabled value={sortBy}>
+          <option value="">{t('filterSort')}</option>
+          <option value="score">{t('score')}</option>
+          <option value="popularity">{t('popularity')}</option>
+          <option value="title">{t('title')}</option>
         </select>
 
         <ViewToggle view={view} onViewChange={setView} />
