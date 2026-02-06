@@ -38,6 +38,18 @@
   opacity: 0.9;
 }
 
+.skeleton-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.skeleton-container .anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
 .loading {
   display: flex;
   flex-direction: column;

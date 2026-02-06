@@ -4,6 +4,7 @@ import AnimeList from './components/AnimeList';
 import SeasonSelector from './components/SeasonSelector';
 import LanguageToggle from './components/LanguageToggle';
 import ThemeToggle from './components/ThemeToggle';
+import SkeletonCard from './components/SkeletonCard';
 import { fetchSeasonalAnime } from './services/jikanApi';
 import { useLanguage } from './contexts/LanguageContext';
 
@@ -54,9 +55,12 @@ function App() {
       />
 
       {loading && (
-        <div className="loading">
-          <div className="spinner"></div>
-          <p>{t('loading')}</p>
+        <div className="skeleton-container">
+          <div className="anime-grid">
+            {[...Array(12)].map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </div>
         </div>
       )}
 
