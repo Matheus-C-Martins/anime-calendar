@@ -8,8 +8,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 function AnimeList({ animes, showFilters = true, view, setView, isCalendarView = false }) {
   const { t } = useLanguage();
-  const [filterDay, setFilterDay] = useState('all');
-  const [sortBy, setSortBy] = useState('score');
+  const [filterDay, setFilterDay] = useState('');
+  const [sortBy, setSortBy] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAnime, setSelectedAnime] = useState(null);
 
@@ -39,12 +39,14 @@ function AnimeList({ animes, showFilters = true, view, setView, isCalendarView =
     : animes;
 
   // Filtrar por dia
-  const filteredAnimes = filterDay === 'all' 
-    ? searchedAnimes 
-    : searchedAnimes.filter(anime => anime.broadcast?.day === filterDay);
+  const filteredAnimes = filterDay && filterDay !== 'all'
+    ? searchedAnimes.filter(anime => anime.broadcast?.day === filterDay)
+    : searchedAnimes;
 
   // Ordenar
   const sortedAnimes = [...filteredAnimes].sort((a, b) => {
+    if (!sortBy) return 0;
+    
     if (sortBy === 'score') {
       if (!a.score && !b.score) return 0;
       if (!a.score) return 1;
@@ -73,14 +75,16 @@ function AnimeList({ animes, showFilters = true, view, setView, isCalendarView =
           <SearchBar onSearch={handleSearch} onClear={handleClearSearch} disabled={isCalendarView} />
           
           <select className="filter-select" value={filterDay} onChange={(e) => setFilterDay(e.target.value)} disabled={isCalendarView}>
-            <option value="all">{t('filterDay')}: {t('all')}</option>
+            <option value="">{t('filterDay')}</option>
+            <option value="all">{t('all')}</option>
             {days.filter(d => d !== 'all').map(day => (
               <option key={day} value={day}>{getDayLabel(day)}</option>
             ))}
           </select>
 
           <select className="filter-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)} disabled={isCalendarView}>
-            <option value="score">{t('filterSort')}: {t('score')}</option>
+            <option value="">{t('filterSort')}</option>
+            <option value="score">{t('score')}</option>
             <option value="popularity">{t('popularity')}</option>
             <option value="title">{t('title')}</option>
           </select>
