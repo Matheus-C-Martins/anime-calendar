@@ -7,6 +7,7 @@ import LanguageToggle from './components/LanguageToggle';
 import ThemeToggle from './components/ThemeToggle';
 import ViewToggle from './components/ViewToggle';
 import SkeletonCard from './components/SkeletonCard';
+import InstallPrompt from './components/InstallPrompt';
 import { fetchSeasonalAnime } from './services/jikanApi';
 import { useLanguage } from './contexts/LanguageContext';
 
@@ -93,6 +94,8 @@ function App() {
           <WeeklyCalendar animes={animes} />
         )
       )}
+
+      <InstallPrompt />
     </div>
   );
 }
