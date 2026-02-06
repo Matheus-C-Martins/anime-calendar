@@ -121,6 +121,17 @@
   white-space: nowrap;
 }
 
+/* Icon-only buttons on desktop */
+.theme-toggle .navbar-item-text,
+.language-toggle .navbar-item-text {
+  display: none;
+}
+
+.theme-toggle,
+.language-toggle {
+  padding: 10px 14px;
+}
+
 .favorites-btn {
   position: relative;
 }
@@ -203,6 +214,17 @@
 
   .navbar-item-icon {
     font-size: 1.4rem;
+  }
+
+  /* Show text in mobile menu */
+  .theme-toggle .navbar-item-text,
+  .language-toggle .navbar-item-text {
+    display: block;
+  }
+
+  .theme-toggle,
+  .language-toggle {
+    padding: 15px 20px;
   }
 }
 
