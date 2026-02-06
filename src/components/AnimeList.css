@@ -22,35 +22,22 @@
   max-width: 400px;
 }
 
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.filter-group label {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.filter-group select {
+.filter-select {
   padding: 0 16px;
   border: 2px solid var(--border-color);
   border-radius: 16px;
   background: var(--card-bg);
   color: var(--text-primary);
   font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   height: 52px;
   min-width: 150px;
 }
 
-.filter-group select:hover,
-.filter-group select:focus {
+.filter-select:hover,
+.filter-select:focus {
   border-color: #667eea;
   outline: none;
 }

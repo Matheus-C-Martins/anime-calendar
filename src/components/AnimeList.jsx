@@ -72,23 +72,17 @@ function AnimeList({ animes, showFilters = true, view, setView }) {
         <div className="filters-bar">
           <SearchBar onSearch={handleSearch} onClear={handleClearSearch} />
           
-          <div className="filter-group">
-            <label>{t('filterByDay')}</label>
-            <select value={filterDay} onChange={(e) => setFilterDay(e.target.value)}>
-              {days.map(day => (
-                <option key={day} value={day}>{getDayLabel(day)}</option>
-              ))}
-            </select>
-          </div>
+          <select className="filter-select" value={filterDay} onChange={(e) => setFilterDay(e.target.value)}>
+            {days.map(day => (
+              <option key={day} value={day}>{getDayLabel(day)}</option>
+            ))}
+          </select>
 
-          <div className="filter-group">
-            <label>{t('sortBy')}</label>
-            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-              <option value="score">{t('score')}</option>
-              <option value="popularity">{t('popularity')}</option>
-              <option value="title">{t('title')}</option>
-            </select>
-          </div>
+          <select className="filter-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option value="score">{t('score')}</option>
+            <option value="popularity">{t('popularity')}</option>
+            <option value="title">{t('title')}</option>
+          </select>
 
           <ViewToggle view={view} onViewChange={setView} />
         </div>
