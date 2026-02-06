@@ -186,7 +186,7 @@ refactor: Reorganiza lógica de filtros
 - [ ] Funciona em dark/light mode
 - [ ] Funciona em PT e EN
 - [ ] Commit messages seguem conventional commits
-- [ ] README atualizado (se necessário)
+- [ ] Documentação atualizada (se necessário)
 
 ## 🙏 Agradecimentos
 
