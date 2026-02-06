@@ -43,7 +43,7 @@ function WeeklyCalendar({ animes, view, setView }) {
 
   return (
     <div className="weekly-calendar">      <div className="calendar-controls">
-        <ViewToggle view={view} setView={setView} />
+        <ViewToggle view={view} onViewChange={setView} />
       </div>
             <div className="calendar-grid">
         {daysOfWeek.map(day => {

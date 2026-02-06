@@ -90,7 +90,7 @@ function AnimeList({ animes, showFilters = true, view, setView }) {
             </select>
           </div>
 
-          <ViewToggle view={view} setView={setView} />
+          <ViewToggle view={view} onViewChange={setView} />
         </div>
       )}
 

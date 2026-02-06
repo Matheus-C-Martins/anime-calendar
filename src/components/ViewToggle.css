@@ -2,21 +2,22 @@
   display: flex;
   gap: 0;
   background: var(--card-bg);
-  padding: 6px;
-  border-radius: 14px;
+  padding: 4px;
+  border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  height: 52px;
 }
 
 .view-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 0 24px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 600;

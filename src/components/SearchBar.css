@@ -13,6 +13,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   border: 2px solid var(--border-color);
+  height: 52px;
 }
 
 .search-input-wrapper:focus-within {
@@ -31,7 +32,7 @@
   flex: 1;
   border: none;
   background: transparent;
-  padding: 18px 0;
+  padding: 0;
   font-size: 1rem;
   color: var(--text-primary);
   outline: none;
