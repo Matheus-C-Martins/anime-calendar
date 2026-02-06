@@ -6,6 +6,32 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Light theme colors */
+  --bg-gradient-start: #667eea;
+  --bg-gradient-end: #764ba2;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --card-bg: white;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: rgba(0, 0, 0, 0.2);
+  --border-color: #e0e0e0;
+  --error-bg: rgba(255, 255, 255, 0.95);
+  --filter-bg: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --bg-gradient-start: #1a1a2e;
+  --bg-gradient-end: #16213e;
+  --text-primary: #eee;
+  --text-secondary: #bbb;
+  --card-bg: #0f3460;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: rgba(0, 0, 0, 0.5);
+  --border-color: #1a1a2e;
+  --error-bg: rgba(15, 52, 96, 0.95);
+  --filter-bg: rgba(15, 52, 96, 0.95);
 }
 
 * {

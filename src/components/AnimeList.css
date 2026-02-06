@@ -4,7 +4,7 @@
 }
 
 .filters {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--filter-bg);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
@@ -12,7 +12,8 @@
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px var(--card-shadow);
+  transition: background 0.3s ease;
 }
 
 .filter-group {
@@ -23,15 +24,16 @@
 
 .filter-group label {
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   font-size: 0.95rem;
 }
 
 .filter-group select {
   padding: 8px 16px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
-  background: white;
+  background: var(--card-bg);
+  color: var(--text-primary);
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -58,11 +60,11 @@
 }
 
 .no-results {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--filter-bg);
   padding: 60px 20px;
   border-radius: 12px;
   text-align: center;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1.1rem;
 }
 

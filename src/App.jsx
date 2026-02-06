@@ -3,6 +3,7 @@ import './App.css';
 import AnimeList from './components/AnimeList';
 import SeasonSelector from './components/SeasonSelector';
 import LanguageToggle from './components/LanguageToggle';
+import ThemeToggle from './components/ThemeToggle';
 import { fetchSeasonalAnime } from './services/jikanApi';
 import { useLanguage } from './contexts/LanguageContext';
 { t } = useLanguage();
@@ -39,6 +40,7 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-top">
+          <ThemeToggle />
           <LanguageToggle />
         </div>
         <h1>📺 {t('appTitle')}</h1>
