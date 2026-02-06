@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import './App.css';
 import AnimeList from './components/AnimeList';
 import SeasonSelector from './components/SeasonSelector';
@@ -6,9 +6,9 @@ import LanguageToggle from './components/LanguageToggle';
 import ThemeToggle from './components/ThemeToggle';
 import { fetchSeasonalAnime } from './services/jikanApi';
 import { useLanguage } from './contexts/LanguageContext';
-{ t } = useLanguage();
-  const 
+
 function App() {
+  const { t } = useLanguage();
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,8 +24,8 @@ function App() {
     try {
       const data = await fetchSeasonalAnime(selectedSeason.year, selectedSeason.season);
       setAnimes(data);
-    } catch (ert('errorLoading')
-      setError('Erro ao carregar animes. Tente novamente mais tarde.');
+    } catch (err) {
+      setError(t('errorLoading'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -43,7 +43,7 @@ function App() {
           <ThemeToggle />
           <LanguageToggle />
         </div>
-        <h1>📺 {t('appTitle')}</h1>
+        <h1> {t('appTitle')}</h1>
         <p>{t('appSubtitle')}</p>
       </header>
       
@@ -53,17 +53,17 @@ function App() {
         onSeasonChange={handleSeasonChange}
       />
 
-      {loadin{t('loading')}</p>
+      {loading && (
+        <div className="loading">
+          <div className="spinner"></div>
+          <p>{t('loading')}</p>
         </div>
       )}
 
       {error && (
         <div className="error">
           <p>{error}</p>
-          <button onClick={loadAnimes}>{t('tryAgain')}
-        <div className="error">
-          <p>{error}</p>
-          <button onClick={loadAnimes}>Tentar novamente</button>
+          <button onClick={loadAnimes}>{t('tryAgain')}</button>
         </div>
       )}
 
