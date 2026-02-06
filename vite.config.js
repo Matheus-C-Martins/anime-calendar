@@ -2,10 +2,17 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// https://vite.dev/config/
+/**
+ * Vite Configuration
+ * 
+ * Configura o ambiente de desenvolvimento e build para produção
+ * com suporte a PWA (Progressive Web App)
+ */
 export default defineConfig({
   plugins: [
     react(),
+    
+    // Plugin PWA para funcionalidades offline e instalação
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg'],
