@@ -1,4 +1,4 @@
-* {
+﻿* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,34 +7,31 @@
 .app {
   min-height: 100vh;
   background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-  padding: 20px;
   transition: background 0.3s ease;
+}
+
+.app-content {
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .app-header {
   text-align: center;
   color: white;
-  padding: 40px 20px;
+  padding: 40px 20px 20px;
   margin-bottom: 30px;
   position: relative;
 }
 
-.header-top {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding: 0 20px;
-}
-
 .app-header h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .app-header p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0.9;
 }
 
@@ -116,17 +113,79 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.favorites-header {
+  text-align: center;
+  color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.favorites-header h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.favorites-count {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.no-favorites {
+  text-align: center;
+  padding: 80px 20px;
+  color: white;
+}
+
+.no-favorites-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.no-favorites h3 {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
 @media (max-width: 768px) {
+  .app-content {
+    padding: 15px;
+  }
+
+  .app-header {
+    padding: 20px 15px 15px;
+  }
+
   .app-header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .app-header p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .favorites-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .no-favorites-icon {
+    font-size: 4rem;
+  }
+
+  .no-favorites h3 {
+    font-size: 1.1rem;
   }
 
   .controls-container {
     gap: 15px;
   }
 }
-

@@ -1,18 +1,19 @@
 ﻿import { useState, useEffect } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
 import AnimeList from './components/AnimeList';
 import WeeklyCalendar from './components/WeeklyCalendar';
 import SeasonSelector from './components/SeasonSelector';
-import LanguageToggle from './components/LanguageToggle';
-import ThemeToggle from './components/ThemeToggle';
 import ViewToggle from './components/ViewToggle';
 import SkeletonCard from './components/SkeletonCard';
 import InstallPrompt from './components/InstallPrompt';
 import { fetchSeasonalAnime } from './services/jikanApi';
 import { useLanguage } from './contexts/LanguageContext';
+import { useFavorites } from './contexts/FavoritesContext';
 
 function App() {
   const { t } = useLanguage();
+  const { favorites } = useFavorites();
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,6 +21,7 @@ function App() {
   const [view, setView] = useState(() => {
     return localStorage.getItem('anime-calendar-view') || 'list';
   });
+  const [showFavorites, setShowFavorites] = useState(false);
 
   useEffect(() => {
     loadAnimes();
@@ -48,27 +50,46 @@ function App() {
     localStorage.setItem('anime-calendar-view', newView);
   };
 
+  const handleShowFavorites = () => {
+    setShowFavorites(!showFavorites);
+  };
+
+  const displayAnimes = showFavorites ? favorites : animes;
+
   return (
     <div className="app">
-      <header className="app-header">
-        <div className="header-top">
-          <ThemeToggle />
-          <LanguageToggle />
-        </div>
-        <h1> {t('appTitle')}</h1>
-        <p>{t('appSubtitle')}</p>
-      </header>
-      
-      <div className="controls-container">
-        <SeasonSelector 
-          currentSeason={selectedSeason.season}
-          currentYear={selectedSeason.year}
-          onSeasonChange={handleSeasonChange}
-        />
-        {!loading && !error && (
-          <ViewToggle view={view} onViewChange={handleViewChange} />
+      <Navbar 
+        onShowFavorites={handleShowFavorites}
+        showingFavorites={showFavorites}
+      />
+
+      <div className="app-content">
+        <header className="app-header">
+          <h1>📺 {t('appTitle')}</h1>
+          <p>{t('appSubtitle')}</p>
+        </header>
+        
+        {!showFavorites && (
+          <div className="controls-container">
+            <SeasonSelector 
+              currentSeason={selectedSeason.season}
+              currentYear={selectedSeason.year}
+              onSeasonChange={handleSeasonChange}
+            />
+            {!loading && !error && (
+              <ViewToggle view={view} onViewChange={handleViewChange} />
+            )}
+          </div>
         )}
-      </div>
+
+        {showFavorites && (
+          <div className="favorites-header">
+            <h2>❤️ {t('myFavorites')}</h2>
+            <p className="favorites-count">
+              {favorites.length} {favorites.length === 1 ? t('animeFound') : t('animesFound')}
+            </p>
+          </div>
+        )}
 
       {loading && (
         <div className="skeleton-container">
@@ -87,15 +108,23 @@ function App() {
         </div>
       )}
 
-      {!loading && !error && (
+      {!loading && !error && displayAnimes.length > 0 && (
         view === 'list' ? (
-          <AnimeList animes={animes} />
+          <AnimeList animes={displayAnimes} showFilters={!showFavorites} />
         ) : (
-          <WeeklyCalendar animes={animes} />
+          <WeeklyCalendar animes={displayAnimes} />
         )
       )}
 
-      <InstallPrompt />
+        {!loading && !error && displayAnimes.length === 0 && showFavorites && (
+          <div className="no-favorites">
+            <p className="no-favorites-icon">💔</p>
+            <h3>{t('noFavorites')}</h3>
+          </div>
+        )}
+
+        <InstallPrompt />
+      </div>
     </div>
   );
 }
