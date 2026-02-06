@@ -70,15 +70,16 @@ function App() {
         </header>
         
         {!showFavorites && (
-          <div className="controls-container">
-            <SeasonSelector 
-              currentSeason={selectedSeason.season}
-              currentYear={selectedSeason.year}
-              onSeasonChange={handleSeasonChange}
-            />
-            {!loading && !error && (
-              <ViewToggle view={view} onViewChange={handleViewChange} />
-            )}
+          <SeasonSelector 
+            currentSeason={selectedSeason.season}
+            currentYear={selectedSeason.year}
+            onSeasonChange={handleSeasonChange}
+          />
+        )}
+
+        {!showFavorites && !loading && !error && (
+          <div className="view-toggle-container">
+            <ViewToggle view={view} onViewChange={handleViewChange} />
           </div>
         )}
 

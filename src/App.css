@@ -35,6 +35,12 @@
   opacity: 0.9;
 }
 
+.view-toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
 .controls-container {
   display: flex;
   justify-content: center;
