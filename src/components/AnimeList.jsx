@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react';
 import './AnimeList.css';
 import AnimeCard from './AnimeCard';
+import AnimeModal from './AnimeModal';
 import SearchBar from './SearchBar';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -9,6 +10,7 @@ function AnimeList({ animes, showFilters = true }) {
   const [filterDay, setFilterDay] = useState('all');
   const [sortBy, setSortBy] = useState('score');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedAnime, setSelectedAnime] = useState(null);
 
   const days = ['all', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays', 'Sundays'];
   
@@ -96,7 +98,11 @@ function AnimeList({ animes, showFilters = true }) {
 
       <div className="anime-grid">
         {sortedAnimes.map(anime => (
-          <AnimeCard key={anime.id} anime={anime} />
+          <AnimeCard 
+            key={anime.id} 
+            anime={anime} 
+            onCardClick={() => setSelectedAnime(anime)}
+          />
         ))}
       </div>
 
@@ -104,6 +110,10 @@ function AnimeList({ animes, showFilters = true }) {
         <div className="no-results">
           <p>{t('noResults')}</p>
         </div>
+      )}
+
+      {selectedAnime && (
+        <AnimeModal anime={selectedAnime} onClose={() => setSelectedAnime(null)} />
       )}
     </div>
   );

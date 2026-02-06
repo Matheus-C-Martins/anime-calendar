@@ -3,15 +3,20 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 import './AnimeCard.css';
 
-function AnimeCard({ anime }) {
+function AnimeCard({ anime, onCardClick }) {
   const { t, language } = useLanguage();
   const { isFavorite, toggleFavorite } = useFavorites();
   const broadcastDay = getDayOfWeek(anime.broadcast, language);
   const broadcastTime = anime.broadcast?.time || '';
   const favorite = isFavorite(anime.id);
 
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    toggleFavorite(anime);
+  };
+
   return (
-    <div className="anime-card">
+    <div className="anime-card" onClick={onCardClick}>
       <div className="anime-image-container">
         <img 
           src={anime.image} 
@@ -26,7 +31,7 @@ function AnimeCard({ anime }) {
         )}
         <button 
           className={`favorite-btn ${favorite ? 'active' : ''}`}
-          onClick={() => toggleFavorite(anime)}
+          onClick={handleFavoriteClick}
           aria-label={favorite ? t('removeFromFavorites') : t('addToFavorites')}
           title={favorite ? t('removeFromFavorites') : t('addToFavorites')}
         >
