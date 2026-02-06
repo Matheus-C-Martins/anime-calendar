@@ -1,11 +1,14 @@
 import { getDayOfWeek } from '../services/jikanApi';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useFavorites } from '../contexts/FavoritesContext';
 import './AnimeCard.css';
 
 function AnimeCard({ anime }) {
   const { t, language } = useLanguage();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const broadcastDay = getDayOfWeek(anime.broadcast, language);
   const broadcastTime = anime.broadcast?.time || '';
+  const favorite = isFavorite(anime.id);
 
   return (
     <div className="anime-card">
@@ -21,6 +24,14 @@ function AnimeCard({ anime }) {
             ⭐ {anime.score.toFixed(2)}
           </div>
         )}
+        <button 
+          className={`favorite-btn ${favorite ? 'active' : ''}`}
+          onClick={() => toggleFavorite(anime)}
+          aria-label={favorite ? t('removeFromFavorites') : t('addToFavorites')}
+          title={favorite ? t('removeFromFavorites') : t('addToFavorites')}
+        >
+          {favorite ? '❤️' : '🤍'}
+        </button>
       </div>
 
       <div className="anime-content">
