@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import AnimeModal from './AnimeModal';
-import ViewToggle from './ViewToggle';
-import SearchBar from './SearchBar';
+import { useLanguage } from '../../contexts/LanguageContext';
+import AnimeModal from '../AnimeModal';
+import ViewToggle from '../ViewToggle';
+import SearchBar from '../SearchBar';
 import './WeeklyCalendar.css';
 
 function WeeklyCalendar({ animes, view, setView, filterDay = '', sortBy = '', searchTerm = '' }) {

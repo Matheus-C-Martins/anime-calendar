@@ -1,10 +1,10 @@
 ﻿import { useState } from 'react';
 import './AnimeList.css';
-import AnimeCard from './AnimeCard';
-import AnimeModal from './AnimeModal';
-import SearchBar from './SearchBar';
-import ViewToggle from './ViewToggle';
-import { useLanguage } from '../contexts/LanguageContext';
+import AnimeCard from '../AnimeCard';
+import AnimeModal from '../AnimeModal';
+import SearchBar from '../SearchBar';
+import ViewToggle from '../ViewToggle';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 function AnimeList({ animes, showFilters = true, view, setView, isCalendarView = false, filterDay, setFilterDay, sortBy, setSortBy, searchTerm, setSearchTerm }) {
   const { t } = useLanguage();

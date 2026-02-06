@@ -1,4 +1,4 @@
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import './ViewToggle.css';
 
 function ViewToggle({ view, onViewChange }) {

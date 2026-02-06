@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './SeasonSelector.css';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 function SeasonSelector({ currentSeason, currentYear, onSeasonChange }) {
   const { t } = useLanguage();

@@ -76,16 +76,46 @@ anime-calendar/
 ├── src/
 │   ├── assets/                       # Recursos estáticos
 │   ├── components/                   # Componentes React
-│   │   ├── AnimeCard.jsx            # Card individual de anime
-│   │   ├── AnimeList.jsx            # Lista/grid de animes
-│   │   ├── AnimeModal.jsx           # Modal com detalhes completos
-│   │   ├── InstallPrompt.jsx        # Prompt de instalação PWA
-│   │   ├── Navbar.jsx               # Barra de navegação
-│   │   ├── SearchBar.jsx            # Barra de pesquisa
-│   │   ├── SeasonSelector.jsx       # Seletor de temporada/ano
-│   │   ├── SkeletonCard.jsx         # Loading skeleton
-│   │   ├── ViewToggle.jsx           # Toggle lista/calendário
-│   │   └── WeeklyCalendar.jsx       # Vista de calendário semanal
+│   │   ├── AnimeCard/               # Card individual de anime
+│   │   │   ├── AnimeCard.jsx
+│   │   │   ├── AnimeCard.css
+│   │   │   └── index.js
+│   │   ├── AnimeList/               # Lista/grid de animes
+│   │   │   ├── AnimeList.jsx
+│   │   │   ├── AnimeList.css
+│   │   │   └── index.js
+│   │   ├── AnimeModal/              # Modal com detalhes completos
+│   │   │   ├── AnimeModal.jsx
+│   │   │   ├── AnimeModal.css
+│   │   │   └── index.js
+│   │   ├── InstallPrompt/           # Prompt de instalação PWA
+│   │   │   ├── InstallPrompt.jsx
+│   │   │   ├── InstallPrompt.css
+│   │   │   └── index.js
+│   │   ├── Navbar/                  # Barra de navegação
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Navbar.css
+│   │   │   └── index.js
+│   │   ├── SearchBar/               # Barra de pesquisa
+│   │   │   ├── SearchBar.jsx
+│   │   │   ├── SearchBar.css
+│   │   │   └── index.js
+│   │   ├── SeasonSelector/          # Seletor de temporada/ano
+│   │   │   ├── SeasonSelector.jsx
+│   │   │   ├── SeasonSelector.css
+│   │   │   └── index.js
+│   │   ├── SkeletonCard/            # Loading skeleton
+│   │   │   ├── SkeletonCard.jsx
+│   │   │   ├── SkeletonCard.css
+│   │   │   └── index.js
+│   │   ├── ViewToggle/              # Toggle lista/calendário
+│   │   │   ├── ViewToggle.jsx
+│   │   │   ├── ViewToggle.css
+│   │   │   └── index.js
+│   │   └── WeeklyCalendar/          # Vista de calendário semanal
+│   │       ├── WeeklyCalendar.jsx
+│   │       ├── WeeklyCalendar.css
+│   │       └── index.js
 │   ├── contexts/                     # React Context providers
 │   │   ├── FavoritesContext.jsx     # Gestão de favoritos
 │   │   ├── LanguageContext.jsx      # Sistema de traduções

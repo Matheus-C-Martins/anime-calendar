@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { useTheme } from '../contexts/ThemeContext';
-import { useFavorites } from '../contexts/FavoritesContext';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { useTheme } from '../../contexts/ThemeContext';
+import { useFavorites } from '../../contexts/FavoritesContext';
 import './Navbar.css';
 
 function Navbar({ onShowFavorites, showingFavorites }) {

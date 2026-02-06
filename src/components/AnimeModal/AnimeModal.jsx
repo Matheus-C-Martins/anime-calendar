@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { useFavorites } from '../contexts/FavoritesContext';
-import { getDayOfWeek } from '../services/jikanApi';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { useFavorites } from '../../contexts/FavoritesContext';
+import { getDayOfWeek } from '../../services/jikanApi';
 import './AnimeModal.css';
 
 function AnimeModal({ anime, onClose }) {
