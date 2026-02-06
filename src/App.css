@@ -38,6 +38,15 @@
   opacity: 0.9;
 }
 
+.controls-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
 .skeleton-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -114,6 +123,10 @@
   
   .app-header p {
     font-size: 1rem;
+  }
+
+  .controls-container {
+    gap: 15px;
   }
 }
 

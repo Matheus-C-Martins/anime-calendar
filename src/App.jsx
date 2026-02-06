@@ -1,9 +1,11 @@
 ﻿import { useState, useEffect } from 'react';
 import './App.css';
 import AnimeList from './components/AnimeList';
+import WeeklyCalendar from './components/WeeklyCalendar';
 import SeasonSelector from './components/SeasonSelector';
 import LanguageToggle from './components/LanguageToggle';
 import ThemeToggle from './components/ThemeToggle';
+import ViewToggle from './components/ViewToggle';
 import SkeletonCard from './components/SkeletonCard';
 import { fetchSeasonalAnime } from './services/jikanApi';
 import { useLanguage } from './contexts/LanguageContext';
@@ -14,6 +16,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedSeason, setSelectedSeason] = useState({ season: 'winter', year: 2026 });
+  const [view, setView] = useState(() => {
+    return localStorage.getItem('anime-calendar-view') || 'list';
+  });
 
   useEffect(() => {
     loadAnimes();
@@ -37,6 +42,11 @@ function App() {
     setSelectedSeason({ season, year });
   };
 
+  const handleViewChange = (newView) => {
+    setView(newView);
+    localStorage.setItem('anime-calendar-view', newView);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -48,11 +58,16 @@ function App() {
         <p>{t('appSubtitle')}</p>
       </header>
       
-      <SeasonSelector 
-        currentSeason={selectedSeason.season}
-        currentYear={selectedSeason.year}
-        onSeasonChange={handleSeasonChange}
-      />
+      <div className="controls-container">
+        <SeasonSelector 
+          currentSeason={selectedSeason.season}
+          currentYear={selectedSeason.year}
+          onSeasonChange={handleSeasonChange}
+        />
+        {!loading && !error && (
+          <ViewToggle view={view} onViewChange={handleViewChange} />
+        )}
+      </div>
 
       {loading && (
         <div className="skeleton-container">
@@ -72,7 +87,11 @@ function App() {
       )}
 
       {!loading && !error && (
-        <AnimeList animes={animes} />
+        view === 'list' ? (
+          <AnimeList animes={animes} />
+        ) : (
+          <WeeklyCalendar animes={animes} />
+        )
       )}
     </div>
   );
